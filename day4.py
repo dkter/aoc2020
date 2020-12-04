@@ -1,3 +1,4 @@
+# I AM AWARE THAT THIS CODE IS THE WORST THING I HAVE EVER WRITTEN, I WAS UNDER TIME PRESSURE
 def is_valid(passport):
     try:
         hgt_units = passport["hgt"][-2:]
