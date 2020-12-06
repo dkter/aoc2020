@@ -17,7 +17,6 @@ total = 0
 for group in answers:
     flattened_ans = reduce(or_, group, set())
     total += len(flattened_ans)
-
 print(total)
 
 total = 0
