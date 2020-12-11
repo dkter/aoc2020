@@ -1,11 +1,12 @@
 from pprint import pprint
+import timeit
 
 layout = []
 with open("day11.in") as f:
     for line in f:
         layout.append(list(line.strip()))
 
-def part1(layout):
+def part1(layout=[row[:] for row in layout]):
     new_layout = None
     while layout != new_layout:
         if new_layout is not None:
@@ -25,7 +26,7 @@ def part1(layout):
                 
     return sum(row.count('#') for row in layout)
 
-def part2(layout):
+def part2(layout=[row[:] for row in layout]):
     new_layout = None
     positions = {}
     while layout != new_layout:
@@ -67,4 +68,7 @@ def part2(layout):
                 
     return sum(row.count('#') for row in layout)
 
-print(part2(layout[:]))
+print("part 1:", part1())
+print("part 2:", part2())
+print("time for part 1:", timeit.timeit(part1, number=1))
+print("time for part 2:", timeit.timeit(part2, number=1))
