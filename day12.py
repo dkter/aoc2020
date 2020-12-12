@@ -32,46 +32,8 @@ for instr in instrs:
         pos[0] += instr.value * np.sin(np.radians(dir))
         pos[1] += instr.value * np.cos(np.radians(dir))
 
-print(pos)
-print(abs(pos[0]) + abs(pos[1]))
+print(round(abs(pos[0]) + abs(pos[1])))
 
-# part 2 (not working)
-
-def rotate_point(y, x, degrees):
-    wp_angle = math.atan2(y, x)
-    new_angle = math.pi - wp_angle - np.radians(degrees)
-    distance = math.sqrt(x**2 + y**2)
-    return round(distance * math.cos(new_angle)), round(distance * math.sin(new_angle))
-
-# 1 unit north and 10 units east
-waypoint = [1, 10]
-pos = [0, 0]
-for instr in instrs:
-    if instr.action == "N":
-        waypoint[0] += instr.value
-    if instr.action == "S":
-        waypoint[0] -= instr.value
-    if instr.action == "E":
-        waypoint[1] += instr.value
-    if instr.action == "W":
-        waypoint[1] -= instr.value
-    if instr.action == "L":
-        x, y = rotate_point(*waypoint, instr.value)
-        waypoint[0] = y
-        waypoint[1] = -x
-    if instr.action == "R":
-        x, y = rotate_point(*waypoint, instr.value)
-        waypoint[0] = -y
-        waypoint[1] = x
-    if instr.action == "F":
-        pos[0] += waypoint[0] * instr.value
-        pos[1] += waypoint[1] * instr.value
-    #print(pos, waypoint)
-
-print(pos)
-print(abs(pos[0]) + abs(pos[1]))
-
-# part 2 (working)
 
 def rotate_point_complex(point, degrees):
     return point * cmath.rect(1, np.radians(degrees))
@@ -96,5 +58,4 @@ for instr in instrs:
         pos += waypoint.real * instr.value
         pos += waypoint.imag * instr.value * 1j
 
-print(pos)
-print(abs(pos.real) + abs(pos.imag))
+print(round(abs(pos.real) + abs(pos.imag)))
