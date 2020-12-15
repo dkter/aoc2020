@@ -1,4 +1,3 @@
-
 with open("day15.in") as f:
     orig_nums = [int(i) for i in f.read().split(",")]
 
