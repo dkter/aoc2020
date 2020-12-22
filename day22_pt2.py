@@ -1,7 +1,5 @@
 from collections import deque
-from copy import deepcopy
 from itertools import islice
-from functools import lru_cache
 
 players = {}
 with open("day22.in") as f:
