@@ -46,9 +46,6 @@ for _ in range(100):
     dest_idx = cups.index(destination)
 
     cups = WraparoundList(cups[:dest_idx+1] + pickup + cups[dest_idx+1:])
-    current_idx += 1
-    if current_idx >= len(cups):
-        current_idx = 0
 
 print(cups)
 print(''.join([str(cup) for cup in cups[cups.index(1)+1:] + cups[:cups.index(1)]]))
