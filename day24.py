@@ -1,11 +1,11 @@
-def get_adjacent_tiles(map, q, r):
+def get_adjacent_tiles(q, r):
     return [
-        ((q, r-1), map.get((q, r-1), False)),
-        ((q, r+1), map.get((q, r+1), False)),
-        ((q-1, r), map.get((q-1, r), False)),
-        ((q+1, r), map.get((q+1, r), False)),
-        ((q-1, r+1), map.get((q-1, r+1), False)),
-        ((q+1, r-1), map.get((q+1, r-1), False))
+        (q, r-1),
+        (q, r+1),
+        (q-1, r),
+        (q+1, r),
+        (q-1, r+1),
+        (q+1, r-1),
     ]
 
 def black_count(map):
@@ -52,9 +52,9 @@ print(black_count(map))
 for _ in range(100):
     new_map = map.copy()
     for coords, val in map.items():
-        adjacent_tiles = get_adjacent_tiles(map, *coords)
-        for coords2, val2 in adjacent_tiles + [(coords, val)]:
-            adj_count = [tup[1] for tup in get_adjacent_tiles(map, *coords2)].count(True)
+        adjacent_tiles = get_adjacent_tiles(*coords)
+        for coords2, val2 in [(coords, map.get(coords, False)) for coords in adjacent_tiles] + [(coords, val)]:
+            adj_count = [map.get(coords, False) for coords in get_adjacent_tiles(*coords2)].count(True)
             if val2 == True and (adj_count == 0 or adj_count > 2):
                 new_map[coords2] = False
             elif val2 == False and adj_count == 2:
